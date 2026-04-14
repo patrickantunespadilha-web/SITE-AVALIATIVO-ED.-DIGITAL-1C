@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Futebol: O Esporte do Mundo</title>
+    <meta
+      name="description"
+      content="Tudo sobre futebol: histórias, estádios, seleções e torneios do mundo afora."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <!-- Header / Barra de acessibilidade -->
+    <header class="header" role="banner">
+      <div class="container">
+        <h1 class="logo">
+          <span aria-hidden="true">⚽</span>
+          Futebol: O Esporte do Mundo
+        </h1>
+
+        <div
+          class="accessibility-controls"
+          role="region"
+          aria-label="Controles de acessibilidade"
+        >
+          <button
+            type="button"
+            id="toggleContrast"
+            class="btn btn--contrast"
+            aria-label="Alternar modo de alto contraste"
+            aria-pressed="false"
+          >
+            🌓 Alto Contraste
+          </button>
+
+          <div class="font-size-controls" role="group" aria-label="Ajustes de tamanho de texto">
+            <button
+              type="button"
+              id="decreaseFont"
+              class="btn btn--small"
+              aria-label="Diminuir tamanho do texto"
+            >
+              A–
+            </button>
+            <button
+              type="button"
+              id="increaseFont"
+              class="btn btn--small"
+              aria-label="Aumentar tamanho do texto"
+            >
+              A+
+            </button>
+          </div>
+        </div>
+
+        <nav class="nav" role="navigation" aria-label="Navegação principal">
+          <ul class="nav__list">
+            <li><a href="#sobre" class="nav__link">Sobre</a></li>
+            <li><a href="#estadios" class="nav__link">Estádios</a></li>
+            <li><a href="#torneios" class="nav__link">Torneios</a></li>
+            <li><a href="#duvidas" class="nav__link">Perguntas</a></li>
+            <li><a href="#contato" class="btn btn--primary">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Seção HERO -->
+      <section
+        id="hero"
+        class="hero section section--hero"
+        aria-labelledby="hero-title"
+      >
+        <div class="container">
+          <div class="hero__content">
+            <h2 id="hero-title" class="hero__title">
+              O esporte que
+              <strong>une milhões</strong>
+              no mundo inteiro
+            </h2>
+            <p class="hero__text">
+              História, emoção, competição e cultura em um único jogo: futebol.
+            </p>
+            <a href="#torneios" class="btn btn--primary btn--large">
+              Veja os principais torneios
+            </a>
+          </div>
+          <div class="hero__image" aria-hidden="true">
+            <img
+              src="https://via.placeholder.com/600x400?text=Est%C3%A1dio+de+Futebol"
+              alt="Um estádio de futebol lotado de torcedores"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Sobre -->
+      <section
+        id="sobre"
+        class="section section--about"
+        aria-labelledby="about-title"
+      >
+        <div class="container">
+          <header class="section__header">
+            <h2 id="about-title" class="section__title">Sobre o Futebol</h2>
+            <p class="section__subtitle">
+              Conheça um pouco da história, regras e impacto cultural do futebol.
+            </p>
+          </header>
+
+          <div class="about__grid">
+            <article class="card" role="article" aria-labelledby="about-1">
+              <h3 id="about-1" class="card__title">Origens</h3>
+              <p class="card__text">
+                Versões de jogos com bola já eram praticadas em civilizações antigas,
+                mas o futebol moderno foi consolidado na Inglaterra no século XIX.
+              </p>
+            </article>
+            <article class="card" role="article" aria-labelledby="about-2">
+              <h3 id="about-2" class="card__title">Regras Básicas</h3>
+              <p class="card__text">
+                Dois times de 11 jogadores, bola rolando no campo, gol no adversário:
+                simples, mas profundamente estratégico.
+              </p>
+            </article>
+            <article class="card" role="article" aria-labelledby="about-3">
+              <h3 id="about-3" class="card__title">Cultura</h3>
+              <p class="card__text">
+                Camisas, torcidas organizadas, hinos, mascotes e estádios: o futebol
+                é muito mais que um jogo.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Estádios (renderizados por JS) -->
+      <section
+        id="estadios"
+        class="section section--stadiums"
+        aria-labelledby="stadiums-title"
+      >
+        <div class="container">
+          <header class="section__header">
+            <h2 id="stadiums-title" class="section__title">Estádios Famosos</h2>
+            <p class="section__subtitle">
+              Estádios icônicos que marcaram a história do futebol mundial.
+            </p>
+          </header>
+
+          <div id="stadiumsList" class="stadiums__grid" role="feed">
+            <!-- cards carregados por JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Torneios (carrossel) -->
+      <section
+        id="torneios"
+        class="section section--tournaments"
+        aria-labelledby="tournaments-title"
+      >
+        <div class="container">
+          <header class="section__header">
+            <h2 id="tournaments-title" class="section__title">Principais Torneios</h2>
+          </header>
+
+          <div class="carousel" role="region" aria-label="Carrossel de torneios">
+            <ol id="carouselItems" class="carousel__list"></ol>
+
+            <div class="carousel__controls" role="group" aria-label="Controles do carrossel">
+              <button
+                type="button"
+                id="prevBtn"
+                class="carousel__btn"
+                aria-label="Torneio anterior"
+                aria-controls="carouselItems"
+              >
+                &#8249;
+              </button>
+              <button
+                type="button"
+                id="nextBtn"
+                class="carousel__btn"
+                aria-label="Próximo torneio"
+                aria-controls="carouselItems"
+              >
+                &#8250;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Perguntas Frequentes (acordeão) -->
+      <section
+        id="duvidas"
+        class="section section--faq"
+        aria-labelledby="faq-title"
+      >
+        <div class="container">
+          <header class="section__header">
+            <h2 id="faq-title" class="section__title">Perguntas Frequentes sobre Futebol</h2>
+            <p class="section__subtitle">
+              Tire suas dúvidas sobre como o esporte é jogado, organizado e regulamentado.
+            </p>
+          </header>
+
+          <div id="accordion" class="accordion" role="tablist" aria-label="Perguntas frequentes">
+            <!-- itens carregados por JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção Contato -->
+      <section
+        id="contato"
+        class="section section--contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="container">
+          <header class="section__header">
+            <h2 id="contact-title" class="section__title">Fale Conosco</h2>
+            <p class="section__subtitle">
+              Tem outra curiosidade sobre futebol ou quer sugerir conteúdo?
+            </p>
+          </header>
+
+          <form
+            id="contactForm"
+            class="form"
+            role="form"
+            aria-label="Formulário de contato"
+          >
+            <div class="form__row">
+              <label for="name" class="form__label">Nome completo</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form__input"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form__row">
+              <label for="email" class="form__label">E‑mail</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form__input"
+                required
+                aria-required="true"
+              />
+            </div>
+
+            <div class="form__row">
+              <label for="subject" class="form__label">Assunto</label>
+              <select id="subject" name="subject" class="form__input" required>
+                <option value="">Selecione</option>
+                <option value="rules">Regras do jogo</option>
+                <option value="events">Eventos e torneios</option>
+                <option value="article">Conteúdo / artigos</option>
+              </select>
+            </div>
+
+            <div class="form__row">
+              <label for="message" class="form__label">Mensagem</label>
+              <textarea
+                id="message"
+                name="message"
+                class="form__input"
+                rows="5"
+                aria-required="true"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--large">
+              Enviar mensagem
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p class="footer__text">
+          &copy; 2026 Futebol: O Esporte do Mundo. Todos os direitos reservados.
+        </p>
+        <p class="footer__text">
+          Conteúdo informativo e educativo sobre futebol com foco em acessibilidade.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
